@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Borja Pérez Herraiz — Distribution & Business Development</title>
+<meta name="description" content="Borja Pérez Herraiz. Más de 15 años construyendo alianzas de distribución en streaming y medios digitales en Iberia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#111417;
+    --paper:#FFFFFF;
+    --muted:#5B6570;
+    --line:#E4E7EB;
+    --navy:#1F3A5F;
+    --wash:#F5F7FA;
+    --max:1080px;
+    --text-max:640px;
+  }
+  @font-face{
+    font-family:'Type Machine';
+    src:url('type-machine.ttf') format('truetype');
+    font-weight:400;
+    font-display:swap;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Type Machine', 'IBM Plex Sans', -apple-system, sans-serif;
+    font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased;
+  }
+  .display{font-family:'Type Machine', 'Bebas Neue', sans-serif; letter-spacing:0.01em; font-weight:400;}
+  a{color:var(--navy); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--navy); outline-offset:3px;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 32px;}
+  img{max-width:100%; display:block;}
+
+  /* ---- Nav ---- */
+  header.site{position:sticky; top:0; z-index:10; background:rgba(255,255,255,0.92); backdrop-filter:blur(6px); border-bottom:1px solid var(--line);}
+  .nav{max-width:var(--max); margin:0 auto; padding:20px 32px; display:flex; align-items:center; justify-content:space-between;}
+  .nav .mark{display:flex; align-items:center; gap:10px;}
+  .nav .mark svg{display:block;}
+  .nav .mark span{font-family:'Type Machine', 'Archivo', sans-serif; font-weight:700; font-size:1rem; text-transform:uppercase; letter-spacing:0.04em;}
+  .nav .links{display:flex; gap:28px; font-size:0.9rem; text-transform:uppercase; letter-spacing:0.04em; font-weight:600;}
+  .nav .links a{color:var(--ink);}
+  .nav .links a:hover{color:var(--navy);}
+
+  /* ---- Hero ---- */
+  .hero{padding:80px 0 0;}
+  .hero-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:52px; align-items:center;}
+  @media (max-width:840px){.hero-grid{grid-template-columns:1fr; gap:36px;}}
+  .hero .eyebrow{
+    font-family:'Type Machine', 'Archivo', sans-serif; font-weight:700; font-style:italic;
+    text-transform:uppercase; letter-spacing:0.02em; color:var(--navy); font-size:1.1rem; margin-bottom:14px;
+  }
+  .hero .eyebrow::before{content:"_";}
+  .hero h1{font-size:clamp(2.4rem, 6vw, 4rem); line-height:1.05; text-transform:uppercase; max-width:15ch;}
+  .hero h1 .lead{color:var(--navy);}
+  .hero .cta-row{margin-top:32px;}
+  .btn{
+    display:inline-block; font-family:'Type Machine', 'Archivo', sans-serif; font-weight:700; text-transform:uppercase;
+    letter-spacing:0.05em; font-size:0.88rem; padding:15px 30px; background:var(--ink); color:#fff; border-radius:2px;
+  }
+  .btn:hover{background:var(--navy); text-decoration:none;}
+  .hero-photo{position:relative;}
+  .hero-photo .frame{
+    aspect-ratio:1/1; overflow:hidden; border:1px solid var(--line);
+    filter:grayscale(1) contrast(1.05);
+  }
+  .hero-photo .frame img{width:100%; height:100%; object-fit:cover;}
+  .hero-photo .tag{
+    position:absolute; bottom:-14px; left:-14px; background:var(--ink); color:#fff;
+    font-family:'Type Machine', 'Archivo', sans-serif; font-weight:700; text-transform:uppercase; font-size:0.72rem;
+    letter-spacing:0.06em; padding:9px 14px;
+  }
+  .signal{padding:34px 0 10px; opacity:0.9;}
+
+  /* ---- Gallery ---- */
+  .gallery{padding:0 0 60px;}
+  .gallery-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:2px; background:var(--line);}
+  @media (max-width:700px){.gallery-grid{grid-template-columns:1fr;}}
+  .gallery-grid figure{margin:0; position:relative; aspect-ratio:4/3; overflow:hidden; background:var(--ink);}
+  .gallery-grid img{width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(1) contrast(1.05);}
+  .gallery-grid figcaption{
+    position:absolute; left:0; right:0; bottom:0; padding:12px 16px;
+    background:linear-gradient(transparent, rgba(0,0,0,0.75));
+    color:#fff; font-family:'Type Machine', 'Archivo', sans-serif; font-weight:600; text-transform:uppercase;
+    font-size:0.72rem; letter-spacing:0.04em;
+  }
+
+  /* ---- Intro ---- */
+  .intro{padding:64px 0; background:var(--wash); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .intro h2{font-family:'Type Machine', 'Bebas Neue', sans-serif; font-weight:400; text-transform:uppercase; font-size:2.1rem; letter-spacing:0.02em; margin:0 0 22px;}
+  .intro h2 .who{color:var(--navy);}
+  .intro p{max-width:var(--text-max); font-size:1.05rem; color:var(--ink);}
+  .intro p + p{margin-top:16px;}
+  .intro strong{background:linear-gradient(transparent 60%, rgba(31,58,95,0.16) 60%);}
+  .intro .more{margin-top:30px;}
+  .more-link{font-family:'Type Machine', 'Archivo', sans-serif; font-weight:700; text-transform:uppercase; font-size:0.88rem; letter-spacing:0.04em; color:var(--navy); border-bottom:2px solid var(--navy); padding-bottom:2px;}
+
+  /* ---- Experience ---- */
+  .experience{padding:70px 0;}
+  .section-label{font-family:'Type Machine', 'Archivo', sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; font-size:0.85rem; color:var(--navy); margin-bottom:10px;}
+  .experience h2{font-family:'Type Machine', 'Bebas Neue', sans-serif; font-weight:400; text-transform:uppercase; font-size:2.2rem; letter-spacing:0.02em; margin-bottom:36px;}
+  .role{display:grid; grid-template-columns:170px 1px 1fr; gap:0 30px; padding:28px 0;}
+  .role + .role{border-top:1px solid var(--line);}
+  .role .when{font-size:0.9rem; color:var(--muted); font-weight:600;}
+  .role .rule{background:var(--line); width:1px;}
+  .role h3{margin:0; font-size:1.12rem; font-weight:600;}
+  .role .org{color:var(--navy); font-weight:700; font-size:0.95rem; margin-top:3px; text-transform:uppercase; letter-spacing:0.02em;}
+  .role ul{margin:14px 0 0; padding-left:18px;}
+  .role li{margin-bottom:7px; font-size:0.97rem;}
+  .role li::marker{color:var(--navy);}
+  @media (max-width:640px){ .role{grid-template-columns:1fr;} .role .rule{display:none;} }
+
+  /* ---- Companies strip ---- */
+  .companies{padding:64px 0; background:var(--ink); color:#fff; position:relative; overflow:hidden;}
+  .companies .skyline{position:absolute; bottom:0; left:0; right:0; opacity:0.35; pointer-events:none;}
+  .companies .inner{position:relative; z-index:1;}
+  .companies .section-label{color:#9FB3C8;}
+  .companies h2{font-family:'Type Machine', 'Bebas Neue', sans-serif; font-weight:400; text-transform:uppercase; font-size:2rem; letter-spacing:0.02em; color:#fff; margin-bottom:34px;}
+  .companies-grid{display:flex; flex-wrap:wrap; gap:16px 44px; align-items:baseline;}
+  .companies-grid span{font-family:'Type Machine', 'Archivo', sans-serif; font-weight:700; font-size:1.25rem; text-transform:uppercase; letter-spacing:0.01em;}
+  .companies-grid span small{display:block; font-family:'Type Machine', 'IBM Plex Sans'; font-weight:400; text-transform:none; letter-spacing:0; font-size:0.72rem; color:#9FB3C8; margin-top:2px;}
+
+  /* ---- Education / Skills ---- */
+  .split{padding:64px 0; display:grid; grid-template-columns:1fr 1fr; gap:56px;}
+  @media (max-width:760px){.split{grid-template-columns:1fr;}}
+  .split h2{font-family:'Type Machine', 'Bebas Neue', sans-serif; font-weight:400; text-transform:uppercase; font-size:1.7rem; letter-spacing:0.02em; margin-bottom:20px;}
+  .edu-item{padding:14px 0; border-top:1px solid var(--line);}
+  .edu-item:first-of-type{border-top:none;}
+  .edu-item .school{font-weight:600;}
+  .edu-item .degree{color:var(--muted); font-size:0.93rem; margin-top:2px;}
+  .edu-item .years{color:var(--muted); font-size:0.85rem; margin-top:4px; font-weight:600;}
+  .chips{display:flex; flex-wrap:wrap; gap:9px; margin-bottom:26px;}
+  .chip{font-size:0.85rem; padding:7px 14px; border:1px solid var(--line); border-radius:2px; background:var(--wash);}
+  .lang-row{display:flex; justify-content:space-between; padding:9px 0; border-top:1px solid var(--line); font-size:0.95rem;}
+  .lang-row:first-child{border-top:none;}
+  .lang-row .level{color:var(--muted); font-weight:600;}
+
+  /* ---- Footer ---- */
+  footer{padding:60px 0 40px; border-top:1px solid var(--line);}
+  .foot-grid{display:grid; grid-template-columns:auto 1fr auto; gap:40px; align-items:start;}
+  @media (max-width:760px){.foot-grid{grid-template-columns:1fr; gap:28px;}}
+  .foot-mark svg{display:block;}
+  .foot-col .foot-label{font-family:'Type Machine', 'Archivo', sans-serif; font-weight:700; text-transform:uppercase; font-size:0.78rem; letter-spacing:0.06em; color:var(--muted); margin-bottom:8px;}
+  .foot-col a{color:var(--ink); font-weight:500;}
+  .foot-col a:hover{color:var(--navy);}
+  .foot-bottom{margin-top:44px; padding-top:20px; border-top:1px solid var(--line); font-size:0.85rem; color:var(--muted); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="nav">
+    <div class="mark">
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="17" cy="17" r="16.5" stroke="#111417"/>
+        <text x="17" y="23" text-anchor="middle" font-family="Type Machine, Archivo, sans-serif" font-weight="800" font-size="17" fill="#111417">B</text>
+      </svg>
+      <span>Borja Pérez</span>
+    </div>
+    <div class="links">
+      <a href="#experiencia">Experiencia</a>
+      <a href="mailto:borjaperezh@gmail.com">Contacto</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">Distribution &amp; Business Development</p>
+        <h1 class="display"><span class="lead">TÚ</span> construyes tu próxima alianza, <span class="lead">YO</span> encuentro el socio que la hace posible.</h1>
+        <div class="cta-row">
+          <a class="btn" href="mailto:borjaperezh@gmail.com">Contáctame</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <div class="frame">
+          <img src="borja-bw.jpg" alt="Retrato de Borja Pérez Herraiz en blanco y negro">
+        </div>
+        <div class="tag">Madrid, España</div>
+      </div>
+    </div>
+
+    <!-- Motivo original de "señal" — no reproduce material de terceros -->
+    <div class="signal">
+      <svg viewBox="0 0 1080 60" width="100%" height="60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <polyline points="0,30 60,30 90,10 120,50 150,30 210,30 240,15 270,45 300,30 1080,30"
+          fill="none" stroke="#1F3A5F" stroke-width="1.5" opacity="0.55"/>
+        <circle cx="90" cy="10" r="3" fill="#1F3A5F"/>
+        <circle cx="270" cy="45" r="3" fill="#1F3A5F"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="intro">
+  <div class="wrap">
+    <h2>Hola, soy <span class="who">Borja</span></h2>
+    <p>Llevo trabajando desde el <strong>año 2006</strong> en el sector de medios digitales y streaming.</p>
+    <p>He liderado el lanzamiento y la distribución de Pluto TV en España, logrando un <strong>incremento de +700% en ingresos anuales</strong> en solo 3 años a través de alianzas con operadores de televisión de pago, telcos y proveedores de pago en España y Portugal. Esto me ha permitido construir una <strong>amplia red de partnerships estratégicos</strong> en el ecosistema OTT, FAST, AVOD y SVOD.</p>
+    <p>Mi trabajo es encontrar la alianza que aún no has considerado. Te acompaño en todo el proceso de negociación y estructuración para que tu única preocupación sea decidir cuándo firmar.</p>
+    <div class="more">
+      <a class="more-link" href="#experiencia">Ver trayectoria ↓</a>
+    </div>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="wrap">
+    <div class="gallery-grid">
+      <figure>
+        <img src="gallery-1.jpg" alt="Sala de reuniones con mesas y bancos de madera">
+        <figcaption>Espacios de trabajo</figcaption>
+      </figure>
+      <figure>
+        <img src="gallery-2.jpg" alt="Sala de reuniones moderna con vistas a la ciudad">
+        <figcaption>Reuniones de distribución</figcaption>
+      </figure>
+      <figure>
+        <img src="gallery-3.jpg" alt="Fotografía histórica de un edificio de oficinas art déco">
+        <figcaption>Legado y trayectoria</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="experience" id="experiencia">
+  <div class="wrap">
+    <p class="section-label">Experiencia</p>
+    <h2>Trayectoria profesional</h2>
+
+    <div class="role">
+      <div class="when">Marzo 2023 — Actualidad</div>
+      <div class="rule"></div>
+      <div>
+        <h3>Affiliates &amp; Business Development Sr. Manager</h3>
+        <p class="org">Paramount International</p>
+        <ul>
+          <li>Líder del proyecto de distribución e integración de producto de Pluto TV España con operadores de televisión de pago, reforzando las alianzas B2B.</li>
+          <li>Impulsando la venta de distribución de nuestras marcas, liderando la integración de producto de afiliados con operadores de cable, telcos y proveedores de pago en España y Portugal, con un incremento de ingresos anuales de +700% en 3 años.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="role">
+      <div class="when">Diciembre 2013 — Marzo 2023</div>
+      <div class="rule"></div>
+      <div>
+        <h3>Business Development Sr. Manager</h3>
+        <p class="org">ViacomCBS</p>
+        <ul>
+          <li>Líder del proyecto de lanzamiento de Pluto TV España.</li>
+          <li>Impulsó múltiples lanzamientos de producto digital con impacto relevante en ingresos (+1M€) y en el desarrollo de otras áreas de la compañía (MyMTV, MyNickJr, MTV Play, CC App…).</li>
+          <li>Pionero en alianzas estratégicas en mercados emergentes —altavoces inteligentes, podcasts y recompensas digitales—, logrando un +45% en engagement y un +25% en ingresos.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="role">
+      <div class="when">Enero 2012 — Noviembre 2013</div>
+      <div class="rule"></div>
+      <div>
+        <h3>Product Manager</h3>
+        <p class="org">Hearst Magazines</p>
+        <ul>
+          <li>Responsable de la planificación, desarrollo y ejecución de estrategias de marketing y ventas para servicios interactivos (SMS/Voz) y productos Audiotex, con un +20% en ingresos anuales.</li>
+          <li>Lideró la estrategia de servicios telefónicos de tarificación especial (líneas de adultos, votación y tarot).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="role">
+      <div class="when">Noviembre 2007 — Diciembre 2011</div>
+      <div class="rule"></div>
+      <div>
+        <h3>Product Manager</h3>
+        <p class="org">Hachette Filipacchi Media</p>
+        <ul>
+          <li>Gestionó y desplegó nuevos productos y servicios digitales rentables: citas (salimos.es) y apuestas (onplay.es).</li>
+          <li>Amplió los servicios de e-commerce en modelo de suscripción basados en contenido móvil, con un +12% en suscriptores.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="role">
+      <div class="when">Marzo 2006 — Noviembre 2007</div>
+      <div class="rule"></div>
+      <div>
+        <h3>Digital and Mobility Specialist</h3>
+        <p class="org">Prisacom</p>
+        <ul>
+          <li>Responsable del desarrollo de campañas promocionales para dispositivos móviles.</li>
+          <li>Gestión y supervisión de todos los servicios ofrecidos vía móvil (WAP — Máxima FM, Los 40…).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="companies">
+  <!-- Skyline abstracto original, no representa ningún edificio real -->
+  <svg class="skyline" viewBox="0 0 1080 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="20" y="60" width="50" height="80" fill="#1F3A5F"/>
+    <rect x="90" y="30" width="40" height="110" fill="#1F3A5F"/>
+    <rect x="150" y="70" width="60" height="70" fill="#1F3A5F"/>
+    <rect x="900" y="40" width="45" height="100" fill="#1F3A5F"/>
+    <rect x="960" y="75" width="55" height="65" fill="#1F3A5F"/>
+    <rect x="1025" y="20" width="35" height="120" fill="#1F3A5F"/>
+  </svg>
+  <div class="wrap inner">
+    <p class="section-label">Compañías</p>
+    <h2>Marcas con las que he trabajado</h2>
+    <div class="companies-grid">
+      <span>Paramount<small>2023 — actualidad</small></span>
+      <span>ViacomCBS<small>2013 — 2023</small></span>
+      <span>Hearst Magazines<small>2012 — 2013</small></span>
+      <span>Hachette Filipacchi<small>2007 — 2011</small></span>
+      <span>Prisacom<small>2006 — 2007</small></span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="split">
+    <div>
+      <p class="section-label">Formación</p>
+      <h2>Educación</h2>
+      <div class="edu-item">
+        <div class="school">Universidad Complutense de Madrid</div>
+        <div class="degree">Licenciado en Administración y Dirección de Empresas, Dirección Comercial</div>
+        <div class="years">2001 — 2005</div>
+      </div>
+      <div class="edu-item">
+        <div class="school">IMF Business School</div>
+        <div class="degree">Curso Superior en Gestión Comercial y Marketing</div>
+        <div class="years">2011 — 2012</div>
+      </div>
+      <div class="edu-item">
+        <div class="school">UNED</div>
+        <div class="degree">Postgrado en Community Management</div>
+        <div class="years">2012</div>
+      </div>
+    </div>
+    <div>
+      <p class="section-label">Skills &amp; idiomas</p>
+      <h2>Especialidades</h2>
+      <div class="chips">
+        <span class="chip">Desarrollo de negocio</span>
+        <span class="chip">Desarrollo de productos</span>
+        <span class="chip">Negociación de contratos</span>
+        <span class="chip">Estrategia multiplataforma</span>
+        <span class="chip">Alianzas estratégicas</span>
+        <span class="chip">Gestión de equipos</span>
+        <span class="chip">OTT · VOD · AVOD · FAST · SVOD</span>
+      </div>
+      <div class="lang-row"><span>Español</span><span class="level">Nativo</span></div>
+      <div class="lang-row"><span>Inglés</span><span class="level">Profesional</span></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-mark">
+        <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="26" cy="26" r="25" stroke="#111417"/>
+          <text x="26" y="35" text-anchor="middle" font-family="Type Machine, Archivo, sans-serif" font-weight="800" font-size="26" fill="#111417">B</text>
+        </svg>
+      </div>
+      <div class="foot-col">
+        <div class="foot-label">Email</div>
+        <a href="mailto:borjaperezh@gmail.com">borjaperezh@gmail.com</a>
+      </div>
+      <div class="foot-col">
+        <div class="foot-label">LinkedIn</div>
+        <a href="https://www.linkedin.com/in/borjaph/" target="_blank" rel="noopener">linkedin.com/in/borjaph</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>Pozuelo de Alarcón, Madrid, España</span>
+      <span>Borja Pérez Herraiz</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
