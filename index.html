@@ -41,29 +41,32 @@
 
   /* ---- Nav ---- */
   header.site{position:sticky; top:0; z-index:10; background:rgba(255,255,255,0.92); backdrop-filter:blur(6px); border-bottom:1px solid var(--line);}
-  .nav{max-width:var(--max); margin:0 auto; padding:20px 32px; display:flex; align-items:center; justify-content:space-between;}
+  .nav{max-width:var(--max); margin:0 auto; padding:20px 32px; display:flex; align-items:center; justify-content:space-between; gap:20px;}
   .nav .mark{display:flex; align-items:center; gap:10px;}
   .nav .mark svg{display:block;}
   .nav .mark span{font-family:'Type Machine', 'Archivo', sans-serif; font-weight:700; font-size:1rem; text-transform:uppercase; letter-spacing:0.04em;}
+  .nav-right{display:flex; align-items:center; gap:26px;}
   .nav .links{display:flex; gap:28px; font-size:0.9rem; text-transform:uppercase; letter-spacing:0.04em; font-weight:600;}
-  .nav .links a{color:var(--ink);}
+  .nav .links a{color:var(--ink); cursor:pointer;}
   .nav .links a:hover{color:var(--navy);}
+  .lang-switch{display:flex; align-items:center; gap:6px; font-size:0.82rem; font-weight:700; letter-spacing:0.04em;}
+  .lang-switch button{
+    font-family:'Type Machine', 'Archivo', sans-serif; background:none; border:none; cursor:pointer;
+    color:var(--muted); padding:4px 6px; text-transform:uppercase; letter-spacing:0.04em; font-size:0.82rem; font-weight:700;
+  }
+  .lang-switch button.active{color:var(--ink); text-decoration:underline; text-underline-offset:3px;}
+  .lang-switch .sep{color:var(--line);}
 
   /* ---- Hero ---- */
   .hero{padding:80px 0 0;}
   .hero-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:52px; align-items:center;}
   @media (max-width:840px){.hero-grid{grid-template-columns:1fr; gap:36px;}}
-  .hero .eyebrow{
-    font-family:'Type Machine', 'Archivo', sans-serif; font-weight:700; font-style:italic;
-    text-transform:uppercase; letter-spacing:0.02em; color:var(--navy); font-size:1.1rem; margin-bottom:14px;
-  }
-  .hero .eyebrow::before{content:"_";}
-  .hero h1{font-size:clamp(2.4rem, 6vw, 4rem); line-height:1.05; text-transform:uppercase; max-width:15ch;}
-  .hero h1 .lead{color:var(--navy);}
+  .hero h1{font-size:clamp(2.1rem, 5vw, 3.2rem); line-height:1.12; text-transform:uppercase; max-width:18ch;}
+  .hero .lede{margin-top:20px; color:var(--muted); font-size:1.05rem; max-width:52ch; line-height:1.65;}
   .hero .cta-row{margin-top:32px;}
   .btn{
     display:inline-block; font-family:'Type Machine', 'Archivo', sans-serif; font-weight:700; text-transform:uppercase;
-    letter-spacing:0.05em; font-size:0.88rem; padding:15px 30px; background:var(--ink); color:#fff; border-radius:2px;
+    letter-spacing:0.05em; font-size:0.88rem; padding:15px 30px; background:var(--ink); color:#fff; border-radius:2px; cursor:pointer;
   }
   .btn:hover{background:var(--navy); text-decoration:none;}
   .hero-photo{position:relative;}
@@ -72,11 +75,6 @@
     filter:grayscale(1) contrast(1.05);
   }
   .hero-photo .frame img{width:100%; height:100%; object-fit:cover;}
-  .hero-photo .tag{
-    position:absolute; bottom:-14px; left:-14px; background:var(--ink); color:#fff;
-    font-family:'Type Machine', 'Archivo', sans-serif; font-weight:700; text-transform:uppercase; font-size:0.72rem;
-    letter-spacing:0.06em; padding:9px 14px;
-  }
   .signal{padding:34px 0 10px; opacity:0.9;}
 
   /* ---- Gallery ---- */
@@ -100,7 +98,7 @@
   .intro p + p{margin-top:16px;}
   .intro strong{background:linear-gradient(transparent 60%, rgba(31,58,95,0.16) 60%);}
   .intro .more{margin-top:30px;}
-  .more-link{font-family:'Type Machine', 'Archivo', sans-serif; font-weight:700; text-transform:uppercase; font-size:0.88rem; letter-spacing:0.04em; color:var(--navy); border-bottom:2px solid var(--navy); padding-bottom:2px;}
+  .more-link{font-family:'Type Machine', 'Archivo', sans-serif; font-weight:700; text-transform:uppercase; font-size:0.88rem; letter-spacing:0.04em; color:var(--navy); border-bottom:2px solid var(--navy); padding-bottom:2px; cursor:pointer;}
 
   /* ---- Experience ---- */
   .experience{padding:70px 0;}
@@ -164,9 +162,16 @@
       </svg>
       <span>Borja Pérez</span>
     </div>
-    <div class="links">
-      <a href="#experiencia">Experiencia</a>
-      <a href="mailto:borjaperezh@gmail.com">Contacto</a>
+    <div class="nav-right">
+      <div class="links">
+        <a href="#experiencia" id="nav-exp">Experiencia</a>
+        <a href="#contacto" id="nav-contact">Contacto</a>
+      </div>
+      <div class="lang-switch">
+        <button type="button" id="lang-es-btn" class="active" onclick="setLang('es')">ES</button>
+        <span class="sep">/</span>
+        <button type="button" id="lang-en-btn" onclick="setLang('en')">EN</button>
+      </div>
     </div>
   </div>
 </header>
@@ -175,17 +180,16 @@
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <p class="eyebrow">Distribution &amp; Business Development</p>
-        <h1 class="display"><span class="lead">TÚ</span> construyes tu próxima alianza, <span class="lead">YO</span> encuentro el socio que la hace posible.</h1>
+        <h1 class="display" id="hero-h1">Desarrollo de negocio estratégico, creativo y basado en datos.</h1>
+        <p class="lede" id="hero-lede">Más de 15 años de experiencia en estrategias multiplataforma, con capacidad demostrada para identificar nuevas oportunidades de negocio, liderar proyectos digitales y construir alianzas estratégicas en una amplia variedad de plataformas de distribución.</p>
         <div class="cta-row">
-          <a class="btn" href="mailto:borjaperezh@gmail.com">Contáctame</a>
+          <a class="btn" href="#contacto" id="hero-cta">Contáctame</a>
         </div>
       </div>
       <div class="hero-photo">
         <div class="frame">
           <img src="borja-bw.jpg" alt="Retrato de Borja Pérez Herraiz en blanco y negro">
         </div>
-        <div class="tag">Madrid, España</div>
       </div>
     </div>
 
@@ -203,12 +207,12 @@
 
 <section class="intro">
   <div class="wrap">
-    <h2>Hola, soy <span class="who">Borja</span></h2>
-    <p>Llevo trabajando desde el <strong>año 2006</strong> en el sector de medios digitales y streaming.</p>
-    <p>He liderado el lanzamiento y la distribución de Pluto TV en España, logrando un <strong>incremento de +700% en ingresos anuales</strong> en solo 3 años a través de alianzas con operadores de televisión de pago, telcos y proveedores de pago en España y Portugal. Esto me ha permitido construir una <strong>amplia red de partnerships estratégicos</strong> en el ecosistema OTT, FAST, AVOD y SVOD.</p>
-    <p>Mi trabajo es encontrar la alianza que aún no has considerado. Te acompaño en todo el proceso de negociación y estructuración para que tu única preocupación sea decidir cuándo firmar.</p>
+    <h2 id="intro-h2">Hola, soy <span class="who">Borja</span></h2>
+    <p id="intro-p1">Llevo trabajando desde el <strong>año 2006</strong> en el sector de medios digitales y streaming.</p>
+    <p id="intro-p2">He liderado el lanzamiento y la distribución de Pluto TV en España, logrando un <strong>incremento de +700% en ingresos anuales</strong> en solo 3 años a través de alianzas con operadores de televisión de pago, telcos y proveedores de pago en España y Portugal. Esto me ha permitido construir una <strong>amplia red de partnerships estratégicos</strong> en el ecosistema OTT, FAST, AVOD y SVOD.</p>
+    <p id="intro-p3">Mi trabajo es encontrar la alianza que aún no has considerado. Te acompaño en todo el proceso de negociación y estructuración para que tu única preocupación sea decidir cuándo firmar.</p>
     <div class="more">
-      <a class="more-link" href="#experiencia">Ver trayectoria ↓</a>
+      <a class="more-link" href="#experiencia" id="intro-more">Ver trayectoria ↓</a>
     </div>
   </div>
 </section>
@@ -218,15 +222,15 @@
     <div class="gallery-grid">
       <figure>
         <img src="gallery-1.jpg" alt="Sala de reuniones con mesas y bancos de madera">
-        <figcaption>Espacios de trabajo</figcaption>
+        <figcaption id="gallery-cap1">Espacios de trabajo</figcaption>
       </figure>
       <figure>
         <img src="gallery-2.jpg" alt="Sala de reuniones moderna con vistas a la ciudad">
-        <figcaption>Reuniones de distribución</figcaption>
+        <figcaption id="gallery-cap2">Reuniones de distribución</figcaption>
       </figure>
       <figure>
         <img src="gallery-3.jpg" alt="Fotografía histórica de un edificio de oficinas art déco">
-        <figcaption>Legado y trayectoria</figcaption>
+        <figcaption id="gallery-cap3">Legado y trayectoria</figcaption>
       </figure>
     </div>
   </div>
@@ -234,16 +238,16 @@
 
 <section class="experience" id="experiencia">
   <div class="wrap">
-    <p class="section-label">Experiencia</p>
-    <h2>Trayectoria profesional</h2>
+    <p class="section-label" id="exp-label">Experiencia</p>
+    <h2 id="exp-h2">Trayectoria profesional</h2>
 
     <div class="role">
-      <div class="when">Marzo 2023 — Actualidad</div>
+      <div class="when" id="role1-when">Marzo 2023 — Actualidad</div>
       <div class="rule"></div>
       <div>
         <h3>Affiliates &amp; Business Development Sr. Manager</h3>
         <p class="org">Paramount International</p>
-        <ul>
+        <ul id="role1-ul">
           <li>Líder del proyecto de distribución e integración de producto de Pluto TV España con operadores de televisión de pago, reforzando las alianzas B2B.</li>
           <li>Impulsando la venta de distribución de nuestras marcas, liderando la integración de producto de afiliados con operadores de cable, telcos y proveedores de pago en España y Portugal, con un incremento de ingresos anuales de +700% en 3 años.</li>
         </ul>
@@ -251,12 +255,12 @@
     </div>
 
     <div class="role">
-      <div class="when">Diciembre 2013 — Marzo 2023</div>
+      <div class="when" id="role2-when">Diciembre 2013 — Marzo 2023</div>
       <div class="rule"></div>
       <div>
         <h3>Business Development Sr. Manager</h3>
         <p class="org">ViacomCBS</p>
-        <ul>
+        <ul id="role2-ul">
           <li>Líder del proyecto de lanzamiento de Pluto TV España.</li>
           <li>Impulsó múltiples lanzamientos de producto digital con impacto relevante en ingresos (+1M€) y en el desarrollo de otras áreas de la compañía (MyMTV, MyNickJr, MTV Play, CC App…).</li>
           <li>Pionero en alianzas estratégicas en mercados emergentes —altavoces inteligentes, podcasts y recompensas digitales—, logrando un +45% en engagement y un +25% en ingresos.</li>
@@ -265,12 +269,12 @@
     </div>
 
     <div class="role">
-      <div class="when">Enero 2012 — Noviembre 2013</div>
+      <div class="when" id="role3-when">Enero 2012 — Noviembre 2013</div>
       <div class="rule"></div>
       <div>
         <h3>Product Manager</h3>
         <p class="org">Hearst Magazines</p>
-        <ul>
+        <ul id="role3-ul">
           <li>Responsable de la planificación, desarrollo y ejecución de estrategias de marketing y ventas para servicios interactivos (SMS/Voz) y productos Audiotex, con un +20% en ingresos anuales.</li>
           <li>Lideró la estrategia de servicios telefónicos de tarificación especial (líneas de adultos, votación y tarot).</li>
         </ul>
@@ -278,12 +282,12 @@
     </div>
 
     <div class="role">
-      <div class="when">Noviembre 2007 — Diciembre 2011</div>
+      <div class="when" id="role4-when">Noviembre 2007 — Diciembre 2011</div>
       <div class="rule"></div>
       <div>
         <h3>Product Manager</h3>
         <p class="org">Hachette Filipacchi Media</p>
-        <ul>
+        <ul id="role4-ul">
           <li>Gestionó y desplegó nuevos productos y servicios digitales rentables: citas (salimos.es) y apuestas (onplay.es).</li>
           <li>Amplió los servicios de e-commerce en modelo de suscripción basados en contenido móvil, con un +12% en suscriptores.</li>
         </ul>
@@ -291,12 +295,12 @@
     </div>
 
     <div class="role">
-      <div class="when">Marzo 2006 — Noviembre 2007</div>
+      <div class="when" id="role5-when">Marzo 2006 — Noviembre 2007</div>
       <div class="rule"></div>
       <div>
         <h3>Digital and Mobility Specialist</h3>
         <p class="org">Prisacom</p>
-        <ul>
+        <ul id="role5-ul">
           <li>Responsable del desarrollo de campañas promocionales para dispositivos móviles.</li>
           <li>Gestión y supervisión de todos los servicios ofrecidos vía móvil (WAP — Máxima FM, Los 40…).</li>
         </ul>
@@ -316,10 +320,10 @@
     <rect x="1025" y="20" width="35" height="120" fill="#1F3A5F"/>
   </svg>
   <div class="wrap inner">
-    <p class="section-label">Compañías</p>
-    <h2>Marcas con las que he trabajado</h2>
+    <p class="section-label" id="comp-label">Compañías</p>
+    <h2 id="comp-h2">Marcas con las que he trabajado</h2>
     <div class="companies-grid">
-      <span>Paramount<small>2023 — actualidad</small></span>
+      <span>Paramount<small id="comp1-small">2023 — actualidad</small></span>
       <span>ViacomCBS<small>2013 — 2023</small></span>
       <span>Hearst Magazines<small>2012 — 2013</small></span>
       <span>Hachette Filipacchi<small>2007 — 2011</small></span>
@@ -331,43 +335,48 @@
 <div class="wrap">
   <div class="split">
     <div>
-      <p class="section-label">Formación</p>
-      <h2>Educación</h2>
+      <p class="section-label" id="edu-label">Formación</p>
+      <h2 id="edu-h2">Educación</h2>
+      <div class="edu-item">
+        <div class="school">IIA — Instituto de Innovación y Aplicaciones</div>
+        <div class="degree" id="edu0-degree">Máster Ejecutivo en Inteligencia Artificial (en curso)</div>
+        <div class="years" id="edu0-years">Octubre 2026 — Marzo 2027</div>
+      </div>
       <div class="edu-item">
         <div class="school">Universidad Complutense de Madrid</div>
-        <div class="degree">Licenciado en Administración y Dirección de Empresas, Dirección Comercial</div>
+        <div class="degree" id="edu1-degree">Licenciado en Administración y Dirección de Empresas, Dirección Comercial</div>
         <div class="years">2001 — 2005</div>
       </div>
       <div class="edu-item">
         <div class="school">IMF Business School</div>
-        <div class="degree">Curso Superior en Gestión Comercial y Marketing</div>
+        <div class="degree" id="edu2-degree">Curso Superior en Gestión Comercial y Marketing</div>
         <div class="years">2011 — 2012</div>
       </div>
       <div class="edu-item">
         <div class="school">UNED</div>
-        <div class="degree">Postgrado en Community Management</div>
+        <div class="degree" id="edu3-degree">Postgrado en Community Management</div>
         <div class="years">2012</div>
       </div>
     </div>
     <div>
-      <p class="section-label">Skills &amp; idiomas</p>
-      <h2>Especialidades</h2>
+      <p class="section-label" id="skills-label">Skills &amp; idiomas</p>
+      <h2 id="skills-h2">Especialidades</h2>
       <div class="chips">
-        <span class="chip">Desarrollo de negocio</span>
-        <span class="chip">Desarrollo de productos</span>
-        <span class="chip">Negociación de contratos</span>
-        <span class="chip">Estrategia multiplataforma</span>
-        <span class="chip">Alianzas estratégicas</span>
-        <span class="chip">Gestión de equipos</span>
-        <span class="chip">OTT · VOD · AVOD · FAST · SVOD</span>
+        <span class="chip" id="chip1">Liderazgo de equipos</span>
+        <span class="chip" id="chip2">Desarrollo de negocio</span>
+        <span class="chip" id="chip3">Alianzas estratégicas</span>
+        <span class="chip" id="chip4">Negociación de contratos</span>
+        <span class="chip" id="chip5">Estrategia de datos e IA aplicada al negocio</span>
+        <span class="chip" id="chip6">Transformación digital</span>
+        <span class="chip">OTT · FAST · AVOD · SVOD</span>
       </div>
-      <div class="lang-row"><span>Español</span><span class="level">Nativo</span></div>
-      <div class="lang-row"><span>Inglés</span><span class="level">Profesional</span></div>
+      <div class="lang-row"><span id="lang-es-label">Español</span><span class="level" id="lang-es-level">Nativo</span></div>
+      <div class="lang-row"><span id="lang-en-label">Inglés</span><span class="level" id="lang-en-level">Profesional</span></div>
     </div>
   </div>
 </div>
 
-<footer>
+<footer id="contacto">
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-mark">
@@ -377,7 +386,7 @@
         </svg>
       </div>
       <div class="foot-col">
-        <div class="foot-label">Email</div>
+        <div class="foot-label" id="foot-email-label">Email</div>
         <a href="mailto:borjaperezh@gmail.com">borjaperezh@gmail.com</a>
       </div>
       <div class="foot-col">
@@ -386,11 +395,136 @@
       </div>
     </div>
     <div class="foot-bottom">
-      <span>Pozuelo de Alarcón, Madrid, España</span>
+      <span id="foot-location">Pozuelo de Alarcón, Madrid, España</span>
       <span>Borja Pérez Herraiz</span>
     </div>
   </div>
 </footer>
+
+<script>
+var i18n = {
+  es: {
+    'nav-exp': 'Experiencia',
+    'nav-contact': 'Contacto',
+    'hero-h1': 'Desarrollo de negocio estratégico, creativo y basado en datos.',
+    'hero-lede': 'Más de 15 años de experiencia en estrategias multiplataforma, con capacidad demostrada para identificar nuevas oportunidades de negocio, liderar proyectos digitales y construir alianzas estratégicas en una amplia variedad de plataformas de distribución.',
+    'hero-cta': 'Contáctame',
+    'intro-h2': 'Hola, soy <span class="who">Borja</span>',
+    'intro-p1': 'Llevo trabajando desde el <strong>año 2006</strong> en el sector de medios digitales y streaming.',
+    'intro-p2': 'He liderado el lanzamiento y la distribución de Pluto TV en España, logrando un <strong>incremento de +700% en ingresos anuales</strong> en solo 3 años a través de alianzas con operadores de televisión de pago, telcos y proveedores de pago en España y Portugal. Esto me ha permitido construir una <strong>amplia red de partnerships estratégicos</strong> en el ecosistema OTT, FAST, AVOD y SVOD.',
+    'intro-p3': 'Mi trabajo es encontrar la alianza que aún no has considerado. Te acompaño en todo el proceso de negociación y estructuración para que tu única preocupación sea decidir cuándo firmar.',
+    'intro-more': 'Ver trayectoria ↓',
+    'gallery-cap1': 'Espacios de trabajo',
+    'gallery-cap2': 'Reuniones de distribución',
+    'gallery-cap3': 'Legado y trayectoria',
+    'exp-label': 'Experiencia',
+    'exp-h2': 'Trayectoria profesional',
+    'role1-when': 'Marzo 2023 — Actualidad',
+    'role1-ul': '<li>Líder del proyecto de distribución e integración de producto de Pluto TV España con operadores de televisión de pago, reforzando las alianzas B2B.</li><li>Impulsando la venta de distribución de nuestras marcas, liderando la integración de producto de afiliados con operadores de cable, telcos y proveedores de pago en España y Portugal, con un incremento de ingresos anuales de +700% en 3 años.</li>',
+    'role2-when': 'Diciembre 2013 — Marzo 2023',
+    'role2-ul': '<li>Líder del proyecto de lanzamiento de Pluto TV España.</li><li>Impulsó múltiples lanzamientos de producto digital con impacto relevante en ingresos (+1M€) y en el desarrollo de otras áreas de la compañía (MyMTV, MyNickJr, MTV Play, CC App…).</li><li>Pionero en alianzas estratégicas en mercados emergentes —altavoces inteligentes, podcasts y recompensas digitales—, logrando un +45% en engagement y un +25% en ingresos.</li>',
+    'role3-when': 'Enero 2012 — Noviembre 2013',
+    'role3-ul': '<li>Responsable de la planificación, desarrollo y ejecución de estrategias de marketing y ventas para servicios interactivos (SMS/Voz) y productos Audiotex, con un +20% en ingresos anuales.</li><li>Lideró la estrategia de servicios telefónicos de tarificación especial (líneas de adultos, votación y tarot).</li>',
+    'role4-when': 'Noviembre 2007 — Diciembre 2011',
+    'role4-ul': '<li>Gestionó y desplegó nuevos productos y servicios digitales rentables: citas (salimos.es) y apuestas (onplay.es).</li><li>Amplió los servicios de e-commerce en modelo de suscripción basados en contenido móvil, con un +12% en suscriptores.</li>',
+    'role5-when': 'Marzo 2006 — Noviembre 2007',
+    'role5-ul': '<li>Responsable del desarrollo de campañas promocionales para dispositivos móviles.</li><li>Gestión y supervisión de todos los servicios ofrecidos vía móvil (WAP — Máxima FM, Los 40…).</li>',
+    'comp-label': 'Compañías',
+    'comp-h2': 'Marcas con las que he trabajado',
+    'comp1-small': '2023 — actualidad',
+    'edu-label': 'Formación',
+    'edu-h2': 'Educación',
+    'edu0-degree': 'Máster Ejecutivo en Inteligencia Artificial (en curso)',
+    'edu0-years': 'Octubre 2026 — Marzo 2027',
+    'edu1-degree': 'Licenciado en Administración y Dirección de Empresas, Dirección Comercial',
+    'edu2-degree': 'Curso Superior en Gestión Comercial y Marketing',
+    'edu3-degree': 'Postgrado en Community Management',
+    'skills-label': 'Skills &amp; idiomas',
+    'skills-h2': 'Especialidades',
+    'chip1': 'Liderazgo de equipos',
+    'chip2': 'Desarrollo de negocio',
+    'chip3': 'Alianzas estratégicas',
+    'chip4': 'Negociación de contratos',
+    'chip5': 'Estrategia de datos e IA aplicada al negocio',
+    'chip6': 'Transformación digital',
+    'lang-es-label': 'Español',
+    'lang-es-level': 'Nativo',
+    'lang-en-label': 'Inglés',
+    'lang-en-level': 'Profesional',
+    'foot-email-label': 'Email',
+    'foot-location': 'Pozuelo de Alarcón, Madrid, España'
+  },
+  en: {
+    'nav-exp': 'Experience',
+    'nav-contact': 'Contact',
+    'hero-h1': 'Strategic, creative and data-driven business development.',
+    'hero-lede': 'More than 15 years of experience in multi-platform strategies, with a proven ability to identify new business opportunities, lead digital projects and build strategic partnerships across a wide range of distribution platforms.',
+    'hero-cta': 'Contact me',
+    'intro-h2': 'Hi, I\'m <span class="who">Borja</span>',
+    'intro-p1': 'I\'ve been working in the digital media and streaming industry since <strong>2006</strong>.',
+    'intro-p2': 'I led the launch and distribution of Pluto TV in Spain, achieving a <strong>+700% increase in annual revenue</strong> in just 3 years through partnerships with pay-TV operators, telcos and payment providers across Spain and Portugal. This has allowed me to build a <strong>wide network of strategic partnerships</strong> across the OTT, FAST, AVOD and SVOD ecosystem.',
+    'intro-p3': 'My job is finding the partnership you haven\'t considered yet. I guide you through the whole negotiation and deal-structuring process so your only concern is deciding when to sign.',
+    'intro-more': 'See my track record ↓',
+    'gallery-cap1': 'Workspaces',
+    'gallery-cap2': 'Distribution meetings',
+    'gallery-cap3': 'Legacy and track record',
+    'exp-label': 'Experience',
+    'exp-h2': 'Professional track record',
+    'role1-when': 'March 2023 — Present',
+    'role1-ul': '<li>Led the distribution and product integration project for Pluto TV Spain with pay-TV operators, strengthening B2B partnerships.</li><li>Driving brand distribution sales, leading affiliate product integration with cable operators, telcos and payment providers across Spain and Portugal, achieving a +700% increase in annual revenue over 3 years.</li>',
+    'role2-when': 'December 2013 — March 2023',
+    'role2-ul': '<li>Led the Pluto TV Spain launch project.</li><li>Drove multiple digital product launches with significant revenue impact (+€1M) and contributed to the development of other areas of the company (MyMTV, MyNickJr, MTV Play, CC App…).</li><li>Pioneered strategic partnerships in emerging channels — smart speakers, podcasts and digital rewards — achieving +45% engagement and +25% revenue.</li>',
+    'role3-when': 'January 2012 — November 2013',
+    'role3-ul': '<li>Responsible for planning, developing and executing marketing and sales strategies for interactive services (SMS/Voice) and Audiotex products, achieving +20% annual revenue growth.</li><li>Led the strategy for premium-rate phone services (adult lines, voting and tarot).</li>',
+    'role4-when': 'November 2007 — December 2011',
+    'role4-ul': '<li>Managed and deployed new profitable digital products and services: dating (salimos.es) and betting (onplay.es).</li><li>Expanded subscription-based e-commerce services built around mobile content, achieving +12% subscriber growth.</li>',
+    'role5-when': 'March 2006 — November 2007',
+    'role5-ul': '<li>Responsible for developing promotional campaigns for mobile devices.</li><li>Managed and oversaw all services offered via mobile (WAP — Máxima FM, Los 40…).</li>',
+    'comp-label': 'Companies',
+    'comp-h2': 'Brands I\'ve worked with',
+    'comp1-small': '2023 — present',
+    'edu-label': 'Education',
+    'edu-h2': 'Education',
+    'edu0-degree': 'Executive Master\'s in Artificial Intelligence (ongoing)',
+    'edu0-years': 'October 2026 — March 2027',
+    'edu1-degree': 'Bachelor\'s Degree in Business Administration, Commercial Management',
+    'edu2-degree': 'Advanced Course in Commercial Management and Marketing',
+    'edu3-degree': 'Postgraduate Diploma in Community Management',
+    'skills-label': 'Skills &amp; languages',
+    'skills-h2': 'Specialties',
+    'chip1': 'Team leadership',
+    'chip2': 'Business development',
+    'chip3': 'Strategic partnerships',
+    'chip4': 'Contract negotiation',
+    'chip5': 'Data strategy &amp; applied AI',
+    'chip6': 'Digital transformation',
+    'lang-es-label': 'Spanish',
+    'lang-es-level': 'Native',
+    'lang-en-label': 'English',
+    'lang-en-level': 'Professional',
+    'foot-email-label': 'Email',
+    'foot-location': 'Pozuelo de Alarcón, Madrid, Spain'
+  }
+};
+
+function setLang(lang){
+  var dict = i18n[lang];
+  for (var id in dict){
+    var el = document.getElementById(id);
+    if (el) el.innerHTML = dict[id];
+  }
+  document.documentElement.lang = lang;
+  document.getElementById('lang-es-btn').classList.toggle('active', lang === 'es');
+  document.getElementById('lang-en-btn').classList.toggle('active', lang === 'en');
+  try { localStorage.setItem('site-lang', lang); } catch(e){}
+}
+
+(function(){
+  var saved = 'es';
+  try { saved = localStorage.getItem('site-lang') || 'es'; } catch(e){}
+  if (saved === 'en') setLang('en');
+})();
+</script>
 
 </body>
 </html>
